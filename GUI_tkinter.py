@@ -1,5 +1,4 @@
-import tkinter as tk
-from tkinter import *
+from FileParser import *
 from FileParser import parse_folder, find_stuff
 # Note that the methods in the tkinter library start with capital letters.
 
@@ -14,14 +13,13 @@ app_frame = tk.Frame(root, background='white') # To make a frame inside the canv
 app_frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1) # Tweaking the dimensions of the frame
 
 # Create text widget and specify size.
-T = Text(root, height=5, width=52)
+# T = Text(app_frame, height=5, width=52) -- For creating writing boxes
+# T.pack(side=TOP)
 
 # Create label
-l = Label(app_frame, text="Select the file you want to analyze. \n Click 'Analyze'")
-l.config(font=("Courier", 14))
-l.pack()
-
-
+intro_label = Label(app_frame, text="Select the folder you wish to analyze. \n Click 'Analyze'", foreground="dark green")
+intro_label.config(font=("Courier", 14))
+intro_label.pack()
 
 
 # Adding Buttons to the GUI
@@ -30,5 +28,5 @@ open_folder = tk.Button(root, text="Select Folder", padx=10, pady=5, foreground=
 open_folder.pack(side=LEFT)
 
 analyze = tk.Button(root, text="Analyze", padx=10, pady=5, foreground="white", background="dark green",
-                   command=find_stuff)
+                    command=find_stuff)
 analyze.pack(side=RIGHT)
