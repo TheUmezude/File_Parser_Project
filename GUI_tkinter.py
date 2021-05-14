@@ -5,6 +5,7 @@ from FileParser import parse_folder, find_stuff
 # Set up the GUI
 root = tk.Tk()
 
+
 # To adjust the size an properties of the generated tkinter canvas.
 app_canvas = tk.Canvas(root, height=600, width=600, background='dark green')
 app_canvas.pack() # To attach the canvas to the interface.

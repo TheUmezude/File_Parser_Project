@@ -33,23 +33,30 @@ def find_stuff():
     pattern = "\W\W\W"
 
     # Look into the individual txt files and extraxt the description
-    for items in range(0, len(found_items)):
-        prompt_1 = f"\n({items + 1}): I found the file named: {found_items[items]}"
-        label_1 = tk.Label(GUI_tkinter.app_frame, text=prompt_1, background="white")
-        label_1.pack()
-        inside_file = check_folder + '\\' + found_items[items]
+    try:
+        for items in range(0, len(found_items)):
+            prompt_1 = f"\n({items + 1}): I found the file named: {found_items[items]}"
+            label_1 = tk.Label(GUI_tkinter.app_frame, text=prompt_1, background="white")
+            label_1.pack()
+            inside_file = check_folder + '\\' + found_items[items]
 
-        with open(inside_file, mode='r', encoding='utf-8') as myfile:
-            prompt_2 = "Inside the file, I found this description: \n "
-            label_2 = tk.Label(GUI_tkinter.app_frame, text=prompt_2, background="white")
-            label_2.pack()
-            contents = myfile.readlines()
+            with open(inside_file, mode='r', encoding='utf-8') as myfile:
+                prompt_2 = "Inside the file, I found this description: \n "
+                label_2 = tk.Label(GUI_tkinter.app_frame, text=prompt_2, background="white")
+                label_2.pack()
+                contents = myfile.readlines()
 
-            for indexing in range(0, len(contents)):
-                if re.search(pattern, contents[indexing]):
-                    content_1 = contents[indexing + 1]
-                    label_3 = tk.Label(GUI_tkinter.app_frame, text=content_1, background="white")
-                    label_3.pack()
-                    break
+                for indexing in range(0, len(contents)):
+                    if re.search(pattern, contents[indexing]):
+                        content_1 = contents[indexing + 1]
+                        label_3 = tk.Label(GUI_tkinter.app_frame, text=content_1, background="white")
+                        label_3.pack()
+                        break
 
-            print("\n\n")
+                print("\n\n")
+
+    except:
+        for items in range(0, len(found_items)):
+            prompt_3 = f"\n({items + 1}): I am having some trouble with: {found_items[items]}"
+            label_4 = tk.Label(GUI_tkinter.app_frame, text=prompt_3, background="white")
+            label_4.pack()
